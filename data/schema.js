@@ -15,7 +15,6 @@ const typeDefinitions = `
 
   type Query {
     author(firstName: String, lastName: String): Author
-    post(title: String, text: String): Post
   }
 
   schema {

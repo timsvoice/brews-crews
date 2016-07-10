@@ -1,20 +1,21 @@
+/* eslint-disable no-unused-vars */
+import { Author, Post } from './connectors';
+
 const resolvers = {
   Query: {
     author(_, args) {
-      return { id: 1, firstName: 'Paul', lastName: 'Voice' };
-    },
-    post(_, args) {
-      return [{ id: 2, title: 'Rauls Explained', text: 'Some philosophy' }];
+      return Author.find({ where: args });
     },
   },
   Author: {
     posts(author) {
-      return [{ id: 2, title: 'Rauls Explained', text: 'Some philosophy' }];
+      console.log(author.getPosts());
+      return author.getPosts();
     },
   },
   Post: {
     author(post) {
-      return { id: 1, firstName: 'Paul', lastName: 'Voice' };
+      return post.getAuthor();
     },
   },
 };
