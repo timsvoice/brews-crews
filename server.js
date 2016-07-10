@@ -3,7 +3,7 @@ import { apolloServer } from 'graphql-tools';
 import Schema from './data/schema';
 import Mocks from './data/mocks';
 
-const GRAPHQL_PORT = 8080;
+const GRAPHQL_PORT = 8000;
 
 const graphQLServer = express();
 graphQLServer.use('/graphql', apolloServer({

@@ -1,11 +1,26 @@
 const typeDefinitions = `
-type Query {
-  testString: String
-}
+  type Author {
+    id: Int
+    firstName: String,
+    lastName: String,
+    posts: [Post],
+  }
 
-schema {
-  query: Query
-}
+  type Post {
+    id: Int
+    title: String,
+    text: String,
+    author: Author,
+  }
+
+  type Query {
+    author(firstName: String, lastName: String): Author
+    post(title: String, text: String): Post
+  }
+
+  schema {
+    query: Query
+  }
 `;
 
 export default [typeDefinitions];
