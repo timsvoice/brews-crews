@@ -1,23 +1,25 @@
 /* eslint-disable no-unused-vars */
-import { Author, Post } from './connectors';
+import { Review, Beer, Search } from './connectors';
 
 const resolvers = {
   Query: {
-    author(_, args) {
-      return Author.find({ where: args });
+    review(_, args) {
+      // return a review from the local mongoDB
+      return Review.findOne({ _id: args._id });
+    },
+    beer(_, args) {
+      //  return a beer from the breweryDB via id
+    },
+    search(_, args) {
+      // return a beer from the breweryDB via name search
     },
   },
-  Author: {
-    posts(author) {
-      console.log(author.getPosts());
-      return author.getPosts();
+  Review: {
+    beer(review) {
+      //  return a beer from the breweryDB via id
+      return review.beer;
     },
-  },
-  Post: {
-    author(post) {
-      return post.getAuthor();
-    },
-  },
+  }
 };
 
 export default resolvers;

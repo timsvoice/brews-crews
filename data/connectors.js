@@ -1,41 +1,42 @@
-import Sequelize from 'sequelize';
+/* eslint-disable no-unused-vars, new-cap */
+
 import casual from 'casual';
+import Mongoose from 'mongoose';
+import rp from 'request-promise';
 import _ from 'underscore';
+// Set Mongoose promises to native promises
+Mongoose.Promise = global.Promise;
 
-const db = new Sequelize('blog', null, null, {
-  dialect: 'sqlite',
-  storage: './blog.sqlite',
+// views in MongoDB
+const mongo = Mongoose.connect('mongodb://localhost/beers');
+
+const ReviewSchema = Mongoose.Schema({
+  beer: Object,
+  rating: Number,
+  location: String,
 });
 
-const AuthorModel = db.define('author', {
-  firstName: { type: Sequelize.STRING },
-  lastName: { type: Sequelize.STRING },
-});
+const Review = Mongoose.model('reviews', ReviewSchema);
 
-const PostModel = db.define('post', {
-  title: { type: Sequelize.STRING },
-  text: { type: Sequelize.STRING },
-});
+const beer = {
+  brewerydb_id: casual.word,
+  name: casual.title,
+  description: casual.words(20),
+  abv: casual.integer(),
+  glassware_id: casual.integer(),
+  style: casual.short_description,
+};
 
-AuthorModel.hasMany(PostModel);
-PostModel.belongsTo(AuthorModel);
+const review = {
+  beer,
+  rating: casual.integer(1),
+  location: casual.short_description,
+};
 
 casual.seed(123);
-db.sync({ force: true }).then(() => {
-  _.times(3, () => {
-    return AuthorModel.create({
-      firstName: casual.first_name,
-      lastName: casual.last_name,
-    }).then((author) => {
-      return author.createPost({
-        title: `A post by ${author.firstName}`,
-        text: casual.sentences(3),
-      });
-    });
-  });
+_.times(2, () => {
+  const newReview = new Review(review);
+  newReview.save();
 });
 
-const Author = db.models.author;
-const Post = db.models.post;
-
-export { Author, Post };
+export { Review };

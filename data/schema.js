@@ -1,20 +1,23 @@
 const typeDefinitions = `
-  type Author {
-    id: Int
-    firstName: String,
-    lastName: String,
-    posts: [Post],
+  type Review {
+    beer: Beer
+    rating: Int,
+    location: String,
   }
 
-  type Post {
-    id: Int
-    title: String,
-    text: String,
-    author: Author,
+  type Beer {
+    brewerydb_id: String,
+    name: String,
+    description: String,
+    abv: Int,
+    glassware_id: Int,
+    style: String,
   }
 
   type Query {
-    author(firstName: String, lastName: String): Author
+    review(_id: String): Review,
+    beer( name: String, brewerydb_id: String): Beer,
+    search( name: String ): Beer,
   }
 
   schema {
