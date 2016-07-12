@@ -5,8 +5,6 @@ import Resolvers from './data/resolvers';
 
 const GRAPHQL_PORT = process.env.PORT;
 
-console.log(process.env.MONGODB_URI);
-
 const graphQLServer = express();
 graphQLServer.use('/graphql', apolloServer({
   graphiql: true,
