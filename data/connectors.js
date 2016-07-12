@@ -6,6 +6,8 @@ import { findBeer, searchBeer } from './brewery.db';
 // Set Mongoose promises to native promises
 Mongoose.Promise = global.Promise;
 
+
+// Local Mongo Data
 const mongo = Mongoose.connect('mongodb://localhost/beers');
 
 const ReviewSchema = Mongoose.Schema({
@@ -16,6 +18,7 @@ const ReviewSchema = Mongoose.Schema({
 
 const Review = Mongoose.model('reviews', ReviewSchema);
 
+// Remote BreweryDB Data
 const Beer = {
   getBeer(beerId) {
     const beer = findBeer(beerId)
