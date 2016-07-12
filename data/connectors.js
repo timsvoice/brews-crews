@@ -8,7 +8,7 @@ Mongoose.Promise = global.Promise;
 const MONGODB_URI = process.env.MONGODB_URI;
 
 // Local Mongo Data
-const mongo = Mongoose.connect('MONGODB_URI');
+const mongo = Mongoose.connect(MONGODB_URI);
 
 const ReviewSchema = Mongoose.Schema({
   beerId: String,
