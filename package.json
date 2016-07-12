@@ -29,6 +29,7 @@
     "express": "4.13.4",
     "graphql": "^0.5.0",
     "graphql-tools": "^0.6.0",
+    "mongoose": "^4.5.4",
     "request-promise": "^3.0.0",
     "sqlite": "^2.0.2",
     "underscore": "^1.8.3",
