@@ -27,10 +27,12 @@
   "homepage": "https://github.com/apollostack/apollo-starter-kit#readme",
   "dependencies": {
     "express": "4.13.4",
+    "graphql": "^0.5.0",
     "graphql-tools": "^0.6.0",
     "request-promise": "^3.0.0",
     "sqlite": "^2.0.2",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "webpack": "^1.13.1"
   },
   "devDependencies": {
     "babel-cli": "6.5.1",
