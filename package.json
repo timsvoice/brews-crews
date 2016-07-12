@@ -57,10 +57,6 @@
     "nodemon": "^1.9.1",
     "graphql": "^0.6.0"
   },
-  "peerDependencies": {
-    "graphql": "^0.5.0 || ^0.6.0",
-    "nodemon": "^1.9.1"
-  },
   "eslintConfig": {
     "parser": "babel-eslint",
     "extends": [
