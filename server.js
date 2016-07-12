@@ -3,7 +3,7 @@ import { apolloServer } from 'apollo-server';
 import Schema from './data/schema';
 import Resolvers from './data/resolvers';
 
-const GRAPHQL_PORT = 8000;
+const GRAPHQL_PORT = process.env.PORT;
 
 console.log(process.env.MONGODB_URI);
 
