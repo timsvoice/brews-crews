@@ -5,7 +5,7 @@ import rp from 'request-promise';
 import { findBeer, searchBeer } from './brewery.db';
 // Set Mongoose promises to native promises
 Mongoose.Promise = global.Promise;
-const MONGOURI = process.env.MONGOURI;
+const MONGOURU = process.env.MONGODB_URI;
 
 // Local Mongo Data
 const mongo = Mongoose.connect('MONGOURI');
