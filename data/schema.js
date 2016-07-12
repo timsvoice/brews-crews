@@ -1,5 +1,6 @@
 const typeDefinitions = `
   type Review {
+    _id: String,
     beerId: String,
     beer: Beer,
     rating: Int,
@@ -17,6 +18,7 @@ const typeDefinitions = `
 
   type Query {
     review(_id: String): Review,
+    reviews : [ Review ],
     beer( beerId: String): Beer,
     search( query: String ): [ Beer ],
   }

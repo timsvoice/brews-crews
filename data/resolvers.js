@@ -7,6 +7,9 @@ const resolvers = {
       // return a review from the local mongoDB
       return Review.findOne({ _id: args._id });
     },
+    reviews(_, args) {
+      return Review.find().limit(10).then((res) => res);
+    },
     beer(_, args) {
       //  return a beer from the breweryDB via id
       return Beer.getBeer(args.beerId);
