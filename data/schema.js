@@ -1,23 +1,24 @@
 const typeDefinitions = `
   type Review {
-    beer: Beer
+    beerId: String,
+    beer: Beer,
     rating: Int,
     location: String,
   }
 
   type Beer {
-    brewerydb_id: String,
+    id: String,
     name: String,
     description: String,
-    abv: Int,
-    glassware_id: Int,
+    abv: String,
+    glasswareId: Int,
     style: String,
   }
 
   type Query {
     review(_id: String): Review,
-    beer( name: String, brewerydb_id: String): Beer,
-    search( name: String ): Beer,
+    beer( beerId: String): Beer,
+    search( query: String ): [ Beer ],
   }
 
   schema {
