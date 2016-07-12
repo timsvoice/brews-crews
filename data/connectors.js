@@ -5,10 +5,10 @@ import rp from 'request-promise';
 import { findBeer, searchBeer } from './brewery.db';
 // Set Mongoose promises to native promises
 Mongoose.Promise = global.Promise;
-const MONGOURU = process.env.MONGODB_URI;
+const MONGODB_URI = process.env.MONGODB_URI;
 
 // Local Mongo Data
-const mongo = Mongoose.connect('MONGOURI');
+const mongo = Mongoose.connect('MONGODB_URI');
 
 const ReviewSchema = Mongoose.Schema({
   beerId: String,
