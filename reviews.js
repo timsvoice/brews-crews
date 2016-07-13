@@ -16,6 +16,8 @@ import {
   CardText,
 } from 'material-ui';
 
+import style from './styles.js';
+
 const networkInterface = createNetworkInterface('http://localhost:8000/graphql');
 
 const client = new ApolloClient({
@@ -24,18 +26,24 @@ const client = new ApolloClient({
 
 const ReviewListItem = ({ review }) => (
   <Card
-    style={{ minWidth: '33.33%' }}
+    style={style.listItem}
   >
+    <CardHeader
+    title={review.beer.name}
+    subtitle={review.beer.style}
+    avatar="http://lorempixel.com/100/100/food"
+    />
     <CardMedia
-      overlay={ <CardTitle title={review.beer.name} subtitle={review.beer.style} /> }
     >
-    <img src={review.beer.label} />
+    { review.beer.label ? <img src={review.beer.label} /> : <img src="http://lorempixel.com/290/290/food" /> }
     </CardMedia>
+    <CardTitle subtitle="Ideal Location" />
+    <CardText>{ review.location }</CardText>
   </Card>
 );
 
 const ReviewList = ({ reviews }) => (
-  <div style={{ display: 'flex' }}>
+  <div style={style.list}>
     { reviews.map((review) => <ReviewListItem review={ review } key={ review._id } />) }
   </div>
 );
