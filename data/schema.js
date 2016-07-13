@@ -14,6 +14,7 @@ const typeDefinitions = `
     abv: String,
     glasswareId: Int,
     style: String,
+    label: String,
   }
 
   type Query {

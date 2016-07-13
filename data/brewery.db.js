@@ -9,11 +9,19 @@ const findBeer = (beerId) => {
     rp(`${BASE_URL}beer/${beerId}?key=${KEY}`)
       .then((res) => JSON.parse(res))
       .then((res) => {
-        const { id, name, description, abv, glasswareId, style } = res.data;
-        const beerData = { id, name, description, abv, glasswareId, style: style.name };
+        const { id, name, description, abv, glasswareId, style, labels } = res.data;
+        const beerData = {
+          id,
+          name,
+          description,
+          abv,
+          glasswareId,
+          style: style.name,
+          label: labels.large,
+        };
         resolve(beerData);
       })
-      .catch((err) => reject(err.error));
+      .catch((err) => console.log(err));
   });
 };
 
@@ -26,8 +34,8 @@ const searchBeer = (beerName) => {
         if (res.data === undefined) reject('No data');
         const resultsArray = res.data.splice(4, res.totalResults);
         const results = resultsArray.map((result) => {
-          const { id, name, description, abv, glasswareId } = result;
-          const beerData = { id, name, description, abv, glasswareId };
+          const { id, name, description, abv, glasswareId, lables } = result;
+          const beerData = { id, name, description, abv, glasswareId, lables: lables.large };
           return beerData;
         });
         resolve(results);
