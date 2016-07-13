@@ -1,3 +1,4 @@
+import path from 'path';
 import express from 'express';
 import { apolloServer } from 'apollo-server';
 import Schema from './data/schema';
@@ -13,7 +14,7 @@ graphQLServer.use('/graphql', apolloServer({
   resolvers: Resolvers,
 }));
 graphQLServer.get('/', (req, res) => {
-  res.sendFile('index.html');
+  res.sendFile('index.html', { root: path.join(__dirname, '/') });
 });
 graphQLServer.listen(GRAPHQL_PORT, () => console.log(
   `GraphQL Server is now running on http://localhost:${GRAPHQL_PORT}/graphql`
