@@ -12,6 +12,9 @@ graphQLServer.use('/graphql', apolloServer({
   schema: Schema,
   resolvers: Resolvers,
 }));
+graphQLServer.get('/', (req, res) => {
+  res.sendFile('./index.html');
+});
 graphQLServer.listen(GRAPHQL_PORT, () => console.log(
   `GraphQL Server is now running on http://localhost:${GRAPHQL_PORT}/graphql`
 ));
