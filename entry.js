@@ -16,10 +16,10 @@ import { AppBar } from 'material-ui';
 const client = new ApolloClient();
 
 ReactDOM.render(
-<MuiThemeProvider>
-  <ApolloProvider client={client}>
-    <Reviews />
-  </ApolloProvider>
+  <MuiThemeProvider>
+    <ApolloProvider client={client}>
+      <Reviews />
+    </ApolloProvider>
   </MuiThemeProvider>,
   document.getElementById('App')
 );
