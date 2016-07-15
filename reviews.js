@@ -44,7 +44,10 @@ const ReviewListItem = ({ review }) => (
 
 const ReviewList = ({ reviews }) => (
   <div style={style.list}>
-    { reviews.map((review) => <ReviewListItem review={ review } key={ review._id } />) }
+    { reviews ?
+      reviews.map((review) => <ReviewListItem review={ review } key={ review._id } />) :
+      <div>Hi</div>
+    }
   </div>
 );
 
