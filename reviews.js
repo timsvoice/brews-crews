@@ -52,12 +52,8 @@ const ReviewList = ({ reviews }) => (
 );
 
 const Reviews = ({ params, data }) => {
-  if (data.loading) return (<div>Loading!</div>);
-  return (
-    <div>
-      <ReviewList reviews={ data.reviews } />
-    </div>
-  );
+  if (data.reviews) return (<div><ReviewList reviews={ data.reviews } /></div>);
+  return (<div>Loading!</div>);
 };
 
 const ReviewsData = connect({
