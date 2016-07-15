@@ -13,9 +13,6 @@ graphQLServer.use('/graphql', apolloServer({
   schema: Schema,
   resolvers: Resolvers,
 }));
-graphQLServer.get('/', (req, res) => {
-  res.sendFile('index.html', { root: path.join(__dirname, '/') });
-});
 graphQLServer.get('/bundle.js', (req, res) => {
   res.sendFile('bundle.js', { root: path.join(__dirname, '/') });
 });
