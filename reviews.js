@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars, no-multi-spaces*/
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Link } from 'react-router';
 import ApolloClient from 'apollo-client';
-import { createNetworkInterface } from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 import gql from 'graphql-tag';
 import { connect } from 'react-apollo';
@@ -16,13 +16,10 @@ import {
   CardText,
 } from 'material-ui';
 
-import style from './styles.js';
+import SearchBar from './search';
+import style from './oldstyles.js';
 
-const networkInterface = createNetworkInterface('http://localhost:8000/graphql');
-
-const client = new ApolloClient({
-  networkInterface,
-});
+const client = new ApolloClient();
 
 const ReviewListItem = ({ review }) => (
   <Card
@@ -44,16 +41,17 @@ const ReviewListItem = ({ review }) => (
 
 const ReviewList = ({ reviews }) => (
   <div style={style.list}>
-    { reviews ?
-      reviews.map((review) => <ReviewListItem review={ review } key={ review._id } />) :
-      <div>Hi</div>
-    }
+    { reviews.map((review) => <ReviewListItem review={ review } key={ review._id } />) }
   </div>
 );
 
 const Reviews = ({ params, data }) => {
-  if (data.reviews) return (<div><ReviewList reviews={ data.reviews } /></div>);
-  return (<div>Loading!</div>);
+  return (
+    <div>
+      <SearchBar />
+      { !data.loading ? <ReviewList reviews={ data.reviews } /> : <div>Loading!</div> }
+    </div>
+  );
 };
 
 const ReviewsData = connect({

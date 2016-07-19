@@ -7,6 +7,7 @@ import Resolvers from './data/resolvers';
 const GRAPHQL_PORT = (process.env.PORT || 8000);
 
 const app = express();
+
 app.use('/graphql', apolloServer({
   graphiql: true,
   pretty: true,
@@ -14,12 +15,10 @@ app.use('/graphql', apolloServer({
   resolvers: Resolvers,
 }));
 
-app.get('/', (req, res) => {
-  res.sendFile('index.html', { root: path.join(__dirname, '/') });
-});
+app.use(express.static(__dirname));
 
-app.get('/bundle.js', (req, res) => {
-  res.sendFile('bundle.js', { root: path.join(__dirname, '/') });
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'index.html'));
 });
 
 app.listen(GRAPHQL_PORT, () => console.log(

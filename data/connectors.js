@@ -22,12 +22,14 @@ const Review = Mongoose.model('reviews', ReviewSchema);
 const Beer = {
   getBeer(beerId) {
     const beer = findBeer(beerId)
-      .then((res) => (res));
+      .then((res) => (res))
+      .catch((err) => { console.log(err); });
     return beer;
   },
   searchBeer(query) {
     const results = searchBeer(query)
-      .then((res) => (res));
+      .then((res) => (res))
+      .catch((err) => { console.log(err); });
     return results;
   },
 };

@@ -1,4 +1,4 @@
-/* eslint-disable consistent-return */
+/* eslint-disable consistent-return, no-unused-vars */
 import rp from 'request-promise';
 
 const BASE_URL = 'http://api.brewerydb.com/v2/';
@@ -31,11 +31,14 @@ const searchBeer = (beerName) => {
     rp(`${BASE_URL}search?q=${query}&key=${KEY}&type=beer`)
       .then((res) => JSON.parse(res))
       .then((res) => {
-        if (res.data === undefined) reject('No data');
-        const resultsArray = res.data.splice(4, res.totalResults);
-        const results = resultsArray.map((result) => {
-          const { id, name, description, abv, glasswareId, lables } = result;
-          const beerData = { id, name, description, abv, glasswareId, lables: lables.large };
+        if (res.data === undefined) resolve('No data');
+        res.data.splice(10, res.totalResults);
+        const results = res.data.map((result) => {
+          const { id, name, description, abv, glasswareId, style } = result;
+          const beerData = { id, name, description, abv, glasswareId, style: style.name };
+          if (!result.labels) beerData.label = 'http://www.kilduffs.com/Beer_116_Baltimore_FredBauernschmidtsAmericanBreweryBeer_Label.jpg';
+          else beerData.label = result.labels.large;
+
           return beerData;
         });
         resolve(results);

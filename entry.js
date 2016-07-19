@@ -4,6 +4,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Link, browserHistory } from 'react-router';
 import Reviews from './reviews';
+import Search from './search';
+import { SearchData } from './search.components';
 import ApolloClient from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 
@@ -16,18 +18,16 @@ import { AppBar } from 'material-ui';
 
 const client = new ApolloClient();
 
-const App = ({ params, data }) => (
+ReactDOM.render((
   <MuiThemeProvider>
     <ApolloProvider client={client}>
-      <Reviews />
+      <Router history={browserHistory}>
+          <Route path="/" component={Reviews}/>
+          <Route path="/search" component={SearchData}>
+            <Route path="?beer=:query" component={SearchData}/>
+          </Route>
+      </Router>
     </ApolloProvider>
-  </MuiThemeProvider>
-);
-
-ReactDOM.render((
-  <Router history={browserHistory}>
-    <Route path="/" component={App}>
-    </Route>
-  </Router>),
+  </MuiThemeProvider>),
   document.getElementById('App')
 );

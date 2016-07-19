@@ -1,3 +1,11 @@
+##160717
+
+We got a "stateless" search function/component going but it doesn't yet accept any user input for returning beer searches. Tonight we're going to implement a search component with state that will be taken from user input. This state will then perform a search on the breweryDB API. Each returned beer should have a Link to create a new review.
+
+####Bonus Points
+
+Create the review page/section and a mutator to persist the new review.
+
 ##160715
 
 Right now we have a working set of React components that display a list of reviews and associated beer data. Next we will need some mutators; specifically to add a new review. To wire this up we will need to call a search, then enable the user to select a beer and add a review (rating and location). The location will be a text input, but the rating will need to be more complicated. Ideally the user will click a star for the associated rating. Each will need to be separate components.
