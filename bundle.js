@@ -60,6 +60,10 @@
 	
 	var _reviews2 = _interopRequireDefault(_reviews);
 	
+	var _reviews3 = __webpack_require__(716);
+	
+	var _reviews4 = _interopRequireDefault(_reviews3);
+	
 	var _search = __webpack_require__(708);
 	
 	var _search2 = _interopRequireDefault(_search);
@@ -72,7 +76,7 @@
 	
 	var _reactApollo = __webpack_require__(342);
 	
-	var _reactTapEventPlugin = __webpack_require__(716);
+	var _reactTapEventPlugin = __webpack_require__(717);
 	
 	var _reactTapEventPlugin2 = _interopRequireDefault(_reactTapEventPlugin);
 	
@@ -86,7 +90,10 @@
 	
 	// Needed for onTouchTap
 	// http://stackoverflow.com/a/34015469/988941
-	(0, _reactTapEventPlugin2.default)(); /* eslint-disable no-unused-vars */
+	/* eslint-disable no-unused-vars */
+	
+	(0, _reactTapEventPlugin2.default)();
+	
 	
 	var client = new _apolloClient2.default();
 	
@@ -104,7 +111,8 @@
 	        _reactRouter.Route,
 	        { path: '/search', component: _search3.SearchData },
 	        _react2.default.createElement(_reactRouter.Route, { path: '?beer=:query', component: _search3.SearchData })
-	      )
+	      ),
+	      _react2.default.createElement(_reactRouter.Router, { path: '/new/review/:beerId', component: _reviews4.default })
 	    )
 	  )
 	), document.getElementById('App'));
@@ -26851,19 +26859,17 @@
 	var Reviews = function Reviews(_ref3) {
 	  var params = _ref3.params;
 	  var data = _ref3.data;
+	  var state = _ref3.state;
 	
-	  if (data.reviews) {
-	    return _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(_search2.default, null),
-	      _react2.default.createElement(ReviewList, { reviews: data.reviews })
-	    );
-	  }
 	  return _react2.default.createElement(
 	    'div',
 	    null,
-	    'Loading!'
+	    _react2.default.createElement(_search2.default, null),
+	    !data.loading ? _react2.default.createElement(ReviewList, { reviews: data.reviews }) : _react2.default.createElement(
+	      'div',
+	      null,
+	      'Loading!'
+	    )
 	  );
 	};
 	
@@ -80006,6 +80012,9 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	/* eslint-disable no-unused-vars, no-multi-spaces, max-len */
+	
+	
 	var SearchBar = _react2.default.createClass({
 	  displayName: 'SearchBar',
 	  getInitialState: function getInitialState(e) {
@@ -80055,8 +80064,7 @@
 	      )
 	    );
 	  }
-	}); /* eslint-disable no-unused-vars, no-multi-spaces, max-len */
-	
+	});
 	
 	exports.default = SearchBar;
 
@@ -81631,6 +81639,8 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactRouter = __webpack_require__(172);
+	
 	var _apolloClient = __webpack_require__(236);
 	
 	var _apolloClient2 = _interopRequireDefault(_apolloClient);
@@ -81664,11 +81674,21 @@
 	  var params = _ref.params;
 	  var data = _ref.data;
 	
+	  if (data.errors) return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(_search2.default, null),
+	    _react2.default.createElement(
+	      'div',
+	      null,
+	      'No Beers Found. Try Again!'
+	    )
+	  );
 	  return _react2.default.createElement(
 	    'div',
 	    null,
 	    _react2.default.createElement(_search2.default, null),
-	    data.search ? _react2.default.createElement(SearchList, { beers: data.search }) : _react2.default.createElement(
+	    !data.loading ? _react2.default.createElement(SearchList, { beers: data.search }) : _react2.default.createElement(
 	      'div',
 	      null,
 	      'Loading!'
@@ -81703,13 +81723,18 @@
 	    }),
 	    _react2.default.createElement(
 	      _materialUi.CardMedia,
-	      null,
+	      { className: 'beer-card-image' },
 	      beer.label ? _react2.default.createElement('img', { src: beer.label }) : _react2.default.createElement('img', { src: 'http://lorempixel.com/290/290/food' })
 	    ),
+	    _react2.default.createElement(_materialUi.Divider, null),
 	    _react2.default.createElement(
 	      _materialUi.CardActions,
-	      null,
-	      _react2.default.createElement(_materialUi.FlatButton, { label: 'Review this Beer' })
+	      { className: 'beer-card-actions' },
+	      _react2.default.createElement(
+	        _reactRouter.Link,
+	        { to: '/new/review/' + beer.id },
+	        _react2.default.createElement(_materialUi.FlatButton, { label: 'Review this Beer' })
+	      )
 	    )
 	  );
 	};
@@ -81719,7 +81744,6 @@
 	    var ownProps = _ref4.ownProps;
 	    var state = _ref4.state;
 	
-	    console.log(ownProps, state);
 	    return {
 	      data: {
 	        query: (0, _graphqlTag2.default)(_templateObject),
@@ -81770,7 +81794,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".search-container {\n  height: 120px !important; }\n\n.search-box-container {\n  width: 100%; }\n  .search-box-container form {\n    width: 100%;\n    margin-bottom: 0rem;\n    display: flex;\n    align-items: center; }\n\n.search-icon {\n  padding: 0px 16px; }\n\n.search-box {\n  min-width: 100px;\n  box-sizing: border-box;\n  width: 100%;\n  background-color: white;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  height: 45px;\n  margin: 0;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center;\n  -webkit-transition: .3s;\n  cursor: default; }\n\n.search-box-input {\n  border: none;\n  box-shadow: none;\n  background-color: #FFF;\n  font-size: 16px;\n  margin-left: 16px;\n  font-family: Roboto,sans-serif;\n  font-weight: 300;\n  width: 100%; }\n  .search-box-input:focus {\n    outline: 0;\n    background-color: #FFF; }\n", ""]);
+	exports.push([module.id, ".search-container {\n  height: 120px !important; }\n\n.search-box-container {\n  width: 100%; }\n  .search-box-container form {\n    width: 100%;\n    margin-bottom: 0rem;\n    display: flex;\n    align-items: center; }\n\n.search-icon {\n  padding: 0px 16px; }\n\n.search-box {\n  min-width: 100px;\n  box-sizing: border-box;\n  width: 100%;\n  background-color: white;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  height: 45px;\n  margin: 0;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center;\n  -webkit-transition: .3s;\n  cursor: default; }\n\n.search-box-input {\n  border: none;\n  box-shadow: none;\n  background-color: #FFF;\n  font-size: 16px;\n  margin-left: 16px;\n  font-family: Roboto,sans-serif;\n  font-weight: 300;\n  width: 100%; }\n  .search-box-input:focus {\n    outline: 0;\n    background-color: #FFF; }\n\n.beer-card-actions {\n  align-self: flex-end; }\n\n.beer-card-image {\n  height: 300px;\n  margin-bottom: 16px; }\n\n.review-container {\n  display: flex;\n  align-items: center;\n  height: 100%; }\n\n.review-card {\n  width: 50%;\n  min-width: 300px;\n  padding: 16px;\n  margin: 0px auto; }\n\n.review-location {\n  margin: 16px 0px; }\n\n.review-submit-button {\n  float: right; }\n\n.review-beer-name {\n  display: inline-block;\n  margin: 0px 16px; }\n\n.review-star {\n  cursor: pointer; }\n  .review-star-container {\n    display: flex;\n    flex-direction: row;\n    margin: 16px 0px; }\n  .review-star.star {\n    color: gray;\n    font-size: 42px; }\n  .review-star.star_border {\n    color: black;\n    font-size: 42px; }\n\n.isActive {\n  color: green; }\n", ""]);
 	
 	// exports
 
@@ -82109,8 +82133,197 @@
 /* 716 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var invariant = __webpack_require__(717);
-	var defaultClickRejectionStrategy = __webpack_require__(718);
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _templateObject = _taggedTemplateLiteral(['\n          query getBeer($beerId: String!) {\n            beer( beerId: $beerId ) {\n              id\n              name\n              description\n              label\n              style\n            }\n          }\n        '], ['\n          query getBeer($beerId: String!) {\n            beer( beerId: $beerId ) {\n              id\n              name\n              description\n              label\n              style\n            }\n          }\n        ']),
+	    _templateObject2 = _taggedTemplateLiteral(['\n          mutation submitReview(\n            $beerId: String!,\n            $rating: Int!,\n            $location: String!,\n          ) {\n            submitReview(\n              beerId: $beerId,\n              rating: $rating,\n              location: $location,\n            ) {\n              _id\n              beer {\n                name\n              }\n              rating\n              location\n            }\n          }\n        '], ['\n          mutation submitReview(\n            $beerId: String!,\n            $rating: Int!,\n            $location: String!,\n          ) {\n            submitReview(\n              beerId: $beerId,\n              rating: $rating,\n              location: $location,\n            ) {\n              _id\n              beer {\n                name\n              }\n              rating\n              location\n            }\n          }\n        ']);
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(172);
+	
+	var _reactDom = __webpack_require__(33);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	var _apolloClient = __webpack_require__(236);
+	
+	var _apolloClient2 = _interopRequireDefault(_apolloClient);
+	
+	var _reactApollo = __webpack_require__(342);
+	
+	var _graphqlTag = __webpack_require__(355);
+	
+	var _graphqlTag2 = _interopRequireDefault(_graphqlTag);
+	
+	var _underscore = __webpack_require__(709);
+	
+	var _underscore2 = _interopRequireDefault(_underscore);
+	
+	var _materialUi = __webpack_require__(357);
+	
+	__webpack_require__(711);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); } /* eslint-disable no-unused-vars, no-multi-spaces*/
+	
+	
+	var starValues = [1, 2, 3, 4, 5];
+	
+	var Star = _react2.default.createClass({
+	  displayName: 'Star',
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'i',
+	        {
+	          className: this.props.star + ' material-icons review-star' },
+	        this.props.star
+	      )
+	    );
+	  }
+	});
+	
+	var NewReview = _react2.default.createClass({
+	  displayName: 'NewReview',
+	  getInitialState: function getInitialState() {
+	    return { stars: 0, location: '' };
+	  },
+	  handleClick: function handleClick(index) {
+	    this.setState({ stars: index + 1 });
+	  },
+	  handleSubmit: function handleSubmit(e) {
+	    e.preventDefault();
+	    var state = this.state;
+	    var props = this.props;
+	    var mutations = this.props.mutations;
+	
+	    var review = {
+	      beerId: props.params.beerId,
+	      location: state.location,
+	      rating: state.stars
+	    };
+	    console.log(review);
+	    mutations.submitReview(review.beerId, review.location, review.rating).then(function (res, err) {
+	      if (err) console.log(err);else _reactRouter.browserHistory.push('/');
+	    });
+	  },
+	  updateLocation: function updateLocation(e) {
+	    this.setState({ location: e.target.value });
+	  },
+	  render: function render() {
+	    var _this = this;
+	
+	    var data = this.props.data;
+	
+	    if (data.loading) return _react2.default.createElement(
+	      'div',
+	      null,
+	      'Loading'
+	    );
+	    return _react2.default.createElement(
+	      'form',
+	      { className: 'review-container', onSubmit: this.handleSubmit },
+	      _react2.default.createElement(
+	        _materialUi.Card,
+	        { zDepth: 1, className: 'review-card' },
+	        _react2.default.createElement(_materialUi.CardHeader, {
+	          title: data.beer.name,
+	          subtitle: data.beer.style,
+	          avatar: data.beer.label }),
+	        _react2.default.createElement(
+	          _materialUi.CardText,
+	          null,
+	          _react2.default.createElement(_materialUi.TextField, {
+	            className: 'review-location',
+	            hintText: 'The Perfect Location',
+	            fullWidth: true,
+	            onChange: this.updateLocation
+	          }),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'review-star-container' },
+	            starValues.map(function (value, index) {
+	              var star = function star(i) {
+	                if (_this.state.stars < index + 1) return 'star_border';
+	                return 'star';
+	              };
+	              return _react2.default.createElement(
+	                'div',
+	                { onClick: _this.handleClick.bind(null, index), key: index },
+	                _react2.default.createElement(Star, {
+	                  value: value,
+	                  index: index,
+	                  star: star(index)
+	                })
+	              );
+	            })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          _materialUi.CardActions,
+	          null,
+	          _react2.default.createElement(_materialUi.FlatButton, {
+	            label: 'Submit',
+	            className: 'review-submit-button',
+	            type: 'submit' })
+	        )
+	      )
+	    );
+	  }
+	});
+	
+	var NewReviewWithData = (0, _reactApollo.connect)({
+	  mapQueriesToProps: function mapQueriesToProps(_ref) {
+	    var ownProps = _ref.ownProps;
+	    var state = _ref.state;
+	
+	    return {
+	      data: {
+	        query: (0, _graphqlTag2.default)(_templateObject),
+	        variables: {
+	          beerId: ownProps.params.beerId
+	        }
+	      }
+	    };
+	  },
+	  mapMutationsToProps: function mapMutationsToProps(_ref2) {
+	    var ownProps = _ref2.ownProps;
+	    var state = _ref2.state;
+	
+	    return {
+	      submitReview: function submitReview(beerId, location, rating) {
+	        return {
+	          mutation: (0, _graphqlTag2.default)(_templateObject2),
+	          variables: {
+	            beerId: beerId,
+	            location: location,
+	            rating: rating
+	          }
+	        };
+	      }
+	    };
+	  }
+	})(NewReview);
+	
+	exports.default = NewReviewWithData;
+
+/***/ },
+/* 717 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {var invariant = __webpack_require__(718);
+	var defaultClickRejectionStrategy = __webpack_require__(719);
 	
 	var alreadyInjected = false;
 	
@@ -82132,14 +82345,14 @@
 	  alreadyInjected = true;
 	
 	  __webpack_require__(42).injection.injectEventPluginsByName({
-	    'TapEventPlugin':       __webpack_require__(719)(shouldRejectClick)
+	    'TapEventPlugin':       __webpack_require__(720)(shouldRejectClick)
 	  });
 	};
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 717 */
+/* 718 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -82194,7 +82407,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 718 */
+/* 719 */
 /***/ function(module, exports) {
 
 	module.exports = function(lastTouchEvent, clickTimestamp) {
@@ -82205,7 +82418,7 @@
 
 
 /***/ },
-/* 719 */
+/* 720 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -82233,10 +82446,10 @@
 	var EventPluginUtils = __webpack_require__(44);
 	var EventPropagators = __webpack_require__(41);
 	var SyntheticUIEvent = __webpack_require__(74);
-	var TouchEventUtils = __webpack_require__(720);
+	var TouchEventUtils = __webpack_require__(721);
 	var ViewportMetrics = __webpack_require__(75);
 	
-	var keyOf = __webpack_require__(721);
+	var keyOf = __webpack_require__(722);
 	var topLevelTypes = EventConstants.topLevelTypes;
 	
 	var isStartish = EventPluginUtils.isStartish;
@@ -82381,7 +82594,7 @@
 
 
 /***/ },
-/* 720 */
+/* 721 */
 /***/ function(module, exports) {
 
 	/**
@@ -82429,7 +82642,7 @@
 
 
 /***/ },
-/* 721 */
+/* 722 */
 /***/ function(module, exports) {
 
 	/**

@@ -1,3 +1,15 @@
+##160719
+
+We have a search function/component. Now we need to create the new review section and associated mutation on GraphQL. This should also serve as the edit review section. Once this is complete we should deploy to Heroku and make sure everything is working in production.
+
+####Bonus Points
+
+Organize the repo into meteor-maker style folder structure.
+
+####Bonus Bonus Points
+
+Plan lesson sequence and start segmenting the repo into first stage.
+
 ##160717
 
 We got a "stateless" search function/component going but it doesn't yet accept any user input for returning beer searches. Tonight we're going to implement a search component with state that will be taken from user input. This state will then perform a search on the breweryDB API. Each returned beer should have a Link to create a new review.

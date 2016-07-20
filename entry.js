@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Link, browserHistory } from 'react-router';
 import Reviews from './reviews';
+import NewReview from './reviews.new';
 import Search from './search';
 import { SearchData } from './search.components';
 import ApolloClient from 'apollo-client';
@@ -26,6 +27,7 @@ ReactDOM.render((
           <Route path="/search" component={SearchData}>
             <Route path="?beer=:query" component={SearchData}/>
           </Route>
+          <Router path="/new/review/:beerId" component={NewReview} />
       </Router>
     </ApolloProvider>
   </MuiThemeProvider>),

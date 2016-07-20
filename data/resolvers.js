@@ -19,6 +19,16 @@ const resolvers = {
       return Beer.searchBeer(args.query);
     },
   },
+  Mutation: {
+    submitReview(_, { beerId, rating, location }) {
+      const review = new Review({ beerId, rating, location });
+      return review.save((err, res) => {
+        if (err) console.log(err);
+        console.log(res);
+        return res;
+      });
+    },
+  },
   Review: {
     beer(review) {
       //  return a beer from the breweryDB via id

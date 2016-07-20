@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars, no-multi-spaces*/
 import React from 'react';
+import { Link } from 'react-router';
 import ApolloClient from 'apollo-client';
 import gql from 'graphql-tag';
 import { connect } from 'react-apollo';
@@ -13,6 +14,7 @@ import {
   CardText,
   CardActions,
   FlatButton,
+  Divider,
 } from 'material-ui';
 
 import './style.scss';
@@ -55,8 +57,11 @@ const SearchListItem = ({ beer }) => {
           <img src="http://lorempixel.com/290/290/food" />
         }
       </CardMedia>
+      <Divider />
       <CardActions className="beer-card-actions">
-        <FlatButton label="Review this Beer" />
+        <Link to={`/new/review/${beer.id}`}>
+          <FlatButton label="Review this Beer" />
+        </Link>
       </CardActions>
     </Card>
   );

@@ -24,8 +24,13 @@ const typeDefinitions = `
     search( query: String ): [ Beer ],
   }
 
+  type Mutation {
+    submitReview( beerId: String, location: String, rating: Int): Review,
+  }
+
   schema {
-    query: Query
+    query: Query,
+    mutation: Mutation,
   }
 `;
 

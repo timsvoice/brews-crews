@@ -61,3 +61,52 @@
   height: 300px;
   margin-bottom: 16px;
 }
+
+.review-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.review-card {
+  width: 50%;
+  min-width: 300px;
+  padding: 16px;
+  margin: 0px auto;
+}
+
+.review-location {
+  margin: 16px 0px;
+}
+
+.review-submit-button {
+  float: right;
+}
+
+.review-beer-name {
+  display: inline-block;
+  margin: 0px 16px;
+}
+
+// Icons
+
+.review-star {
+  &-container {
+    display: flex;
+    flex-direction: row;
+    margin: 16px 0px;
+  }
+  &.star {
+    color: gray;
+    font-size: 42px;
+  }
+  &.star_border {
+    color: black;
+    font-size: 42px;
+  }
+  cursor: pointer;
+}
+
+.isActive {
+  color: green;
+}

@@ -45,7 +45,7 @@ const ReviewList = ({ reviews }) => (
   </div>
 );
 
-const Reviews = ({ params, data }) => {
+const Reviews = ({ params, data, state }) => {
   return (
     <div>
       <SearchBar />
