@@ -60,7 +60,7 @@
 	
 	var _reviews2 = _interopRequireDefault(_reviews);
 	
-	var _reviews3 = __webpack_require__(717);
+	var _reviews3 = __webpack_require__(716);
 	
 	var _reviews4 = _interopRequireDefault(_reviews3);
 	
@@ -76,7 +76,7 @@
 	
 	var _reactApollo = __webpack_require__(342);
 	
-	var _reactTapEventPlugin = __webpack_require__(718);
+	var _reactTapEventPlugin = __webpack_require__(717);
 	
 	var _reactTapEventPlugin2 = _interopRequireDefault(_reactTapEventPlugin);
 	
@@ -26823,7 +26823,7 @@
 	
 	var _search2 = _interopRequireDefault(_search);
 	
-	var _oldstyles = __webpack_require__(716);
+	var _oldstyles = __webpack_require__(715);
 	
 	var _oldstyles2 = _interopRequireDefault(_oldstyles);
 	
@@ -81674,7 +81674,7 @@
 	
 	__webpack_require__(711);
 	
-	var _oldstyles = __webpack_require__(716);
+	var _oldstyles = __webpack_require__(715);
 	
 	var _oldstyles2 = _interopRequireDefault(_oldstyles);
 	
@@ -81784,7 +81784,7 @@
 	var content = __webpack_require__(712);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(715)(content, {});
+	var update = __webpack_require__(714)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -81809,7 +81809,7 @@
 	
 	
 	// module
-	exports.push([module.id, "body {\n  background: url(" + __webpack_require__(714) + ") no-repeat center center fixed;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover; }\n\n.search-container {\n  height: 120px !important; }\n\n.search-box-container {\n  width: 100%; }\n  .search-box-container form {\n    width: 100%;\n    margin-bottom: 0rem;\n    display: flex;\n    align-items: center; }\n\n.search-icon {\n  padding: 0px 16px; }\n\n.search-box {\n  min-width: 100px;\n  box-sizing: border-box;\n  width: 100%;\n  background-color: white;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  height: 45px;\n  margin: 0;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center;\n  -webkit-transition: .3s;\n  cursor: default; }\n\n.search-box-input {\n  border: none;\n  box-shadow: none;\n  background-color: #FFF;\n  font-size: 16px;\n  margin-left: 16px;\n  font-family: Roboto,sans-serif;\n  font-weight: 300;\n  width: 100%; }\n  .search-box-input:focus {\n    outline: 0;\n    background-color: #FFF; }\n\n.beer-card-actions {\n  align-self: flex-end; }\n\n.beer-card-image {\n  height: 300px;\n  margin-bottom: 16px; }\n\n.review-container {\n  display: flex;\n  align-items: center;\n  height: 100%; }\n\n.review-card {\n  width: 50%;\n  min-width: 300px;\n  padding: 16px;\n  margin: 0px auto; }\n\n.review-location {\n  margin: 16px 0px; }\n\n.review-submit-button {\n  float: right; }\n\n.review-beer-name {\n  display: inline-block;\n  margin: 0px 16px; }\n\n.review-star {\n  cursor: pointer; }\n  .review-star-container {\n    display: flex;\n    flex-direction: row;\n    margin: 16px 0px; }\n  .review-star.star {\n    color: gray;\n    font-size: 42px; }\n  .review-star.star_border {\n    color: black;\n    font-size: 42px; }\n\n.isActive {\n  color: green; }\n", ""]);
+	exports.push([module.id, "body {\n  background: url(\"https://s3-us-west-2.amazonaws.com/brewscrews/beer.jpg\") no-repeat center center fixed;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover; }\n\n.search-container {\n  height: 120px !important; }\n\n.search-box-container {\n  width: 100%; }\n  .search-box-container form {\n    width: 100%;\n    margin-bottom: 0rem;\n    display: flex;\n    align-items: center; }\n\n.search-icon {\n  padding: 0px 16px; }\n\n.search-box {\n  min-width: 100px;\n  box-sizing: border-box;\n  width: 100%;\n  background-color: white;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  height: 45px;\n  margin: 0;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center;\n  -webkit-transition: .3s;\n  cursor: default; }\n\n.search-box-input {\n  border: none;\n  box-shadow: none;\n  background-color: #FFF;\n  font-size: 16px;\n  margin-left: 16px;\n  font-family: Roboto,sans-serif;\n  font-weight: 300;\n  width: 100%; }\n  .search-box-input:focus {\n    outline: 0;\n    background-color: #FFF; }\n\n.beer-card-actions {\n  align-self: flex-end; }\n\n.beer-card-image {\n  height: 300px;\n  margin-bottom: 16px; }\n\n.review-container {\n  display: flex;\n  align-items: center;\n  height: 100%; }\n\n.review-card {\n  width: 50%;\n  min-width: 300px;\n  padding: 16px;\n  margin: 0px auto; }\n\n.review-location {\n  margin: 16px 0px; }\n\n.review-submit-button {\n  float: right; }\n\n.review-beer-name {\n  display: inline-block;\n  margin: 0px 16px; }\n\n.review-star {\n  cursor: pointer; }\n  .review-star-container {\n    display: flex;\n    flex-direction: row;\n    margin: 16px 0px; }\n  .review-star.star {\n    color: gray;\n    font-size: 42px; }\n  .review-star.star_border {\n    color: black;\n    font-size: 42px; }\n\n.isActive {\n  color: green; }\n", ""]);
 	
 	// exports
 
@@ -81872,12 +81872,6 @@
 
 /***/ },
 /* 714 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "be599f342304285aeaeb8ecb621a12d4.jpg";
-
-/***/ },
-/* 715 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -82129,7 +82123,7 @@
 
 
 /***/ },
-/* 716 */
+/* 715 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -82151,7 +82145,7 @@
 	exports.default = style;
 
 /***/ },
-/* 717 */
+/* 716 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -82340,11 +82334,11 @@
 	exports.default = NewReviewWithData;
 
 /***/ },
-/* 718 */
+/* 717 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var invariant = __webpack_require__(719);
-	var defaultClickRejectionStrategy = __webpack_require__(720);
+	/* WEBPACK VAR INJECTION */(function(process) {var invariant = __webpack_require__(718);
+	var defaultClickRejectionStrategy = __webpack_require__(719);
 	
 	var alreadyInjected = false;
 	
@@ -82366,14 +82360,14 @@
 	  alreadyInjected = true;
 	
 	  __webpack_require__(42).injection.injectEventPluginsByName({
-	    'TapEventPlugin':       __webpack_require__(721)(shouldRejectClick)
+	    'TapEventPlugin':       __webpack_require__(720)(shouldRejectClick)
 	  });
 	};
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 719 */
+/* 718 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -82428,7 +82422,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 720 */
+/* 719 */
 /***/ function(module, exports) {
 
 	module.exports = function(lastTouchEvent, clickTimestamp) {
@@ -82439,7 +82433,7 @@
 
 
 /***/ },
-/* 721 */
+/* 720 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -82467,10 +82461,10 @@
 	var EventPluginUtils = __webpack_require__(44);
 	var EventPropagators = __webpack_require__(41);
 	var SyntheticUIEvent = __webpack_require__(74);
-	var TouchEventUtils = __webpack_require__(722);
+	var TouchEventUtils = __webpack_require__(721);
 	var ViewportMetrics = __webpack_require__(75);
 	
-	var keyOf = __webpack_require__(723);
+	var keyOf = __webpack_require__(722);
 	var topLevelTypes = EventConstants.topLevelTypes;
 	
 	var isStartish = EventPluginUtils.isStartish;
@@ -82615,7 +82609,7 @@
 
 
 /***/ },
-/* 722 */
+/* 721 */
 /***/ function(module, exports) {
 
 	/**
@@ -82663,7 +82657,7 @@
 
 
 /***/ },
-/* 723 */
+/* 722 */
 /***/ function(module, exports) {
 
 	/**
