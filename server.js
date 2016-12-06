@@ -1,18 +1,15 @@
 import path from 'path';
 import express from 'express';
-import { apolloServer } from 'apollo-server';
+import { graphqlExpress } from 'graphql-server-express';
 import Schema from './data/schema';
-import Resolvers from './data/resolvers';
+import bodyParser from 'body-parser';
 
 const GRAPHQL_PORT = (process.env.PORT || 8000);
 
 const app = express();
 
-app.use('/graphql', apolloServer({
-  graphiql: true,
-  pretty: true,
+app.use('/graphql', bodyParser.json(), graphqlExpress({
   schema: Schema,
-  resolvers: Resolvers,
 }));
 
 app.use(express.static(__dirname));

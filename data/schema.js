@@ -1,3 +1,6 @@
+import Resolvers from './resolvers.js';
+import { makeExecutableSchema } from 'graphql-tools';
+
 const typeDefinitions = `
   type Review {
     _id: String,
@@ -14,7 +17,12 @@ const typeDefinitions = `
     abv: String,
     glasswareId: Int,
     style: String,
-    label: String,
+  }
+
+  type Labels {
+    icon: String,
+    medium: String,
+    large: String!
   }
 
   type Query {
@@ -34,4 +42,9 @@ const typeDefinitions = `
   }
 `;
 
-export default [typeDefinitions];
+const executableSchema = makeExecutableSchema({
+  typeDefs: typeDefinitions,
+  resolvers: Resolvers,
+});
+
+export default executableSchema;

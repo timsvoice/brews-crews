@@ -7,7 +7,7 @@ import Reviews from './reviews';
 import NewReview from './reviews.new';
 import Search from './search';
 import { SearchData } from './search.components';
-import ApolloClient from 'apollo-client';
+import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -17,7 +17,9 @@ injectTapEventPlugin();
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { AppBar } from 'material-ui';
 
-const client = new ApolloClient();
+const client = new ApolloClient({
+  networkInterface: createNetworkInterface('https://09a9kplbc2.execute-api.us-east-1.amazonaws.com/dev/graphql'),
+});
 
 const App = ({ children, params, location }) => (
   <div className="container">

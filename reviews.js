@@ -65,7 +65,6 @@ const ReviewsData = connect({
               beer {
                 name
                 description
-                label
                 style
               }
               rating
